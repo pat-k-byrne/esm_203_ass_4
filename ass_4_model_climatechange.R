@@ -1,5 +1,5 @@
 # Set the seed so we get the same random numbers every time we run this code
-set.seed(6666)
+set.seed(666)
 library(tidyverse)
 
 # Define our possible mean sea levels at each conservation pathway
@@ -79,6 +79,8 @@ for (i in 1:length(surge)) { # For each of the four surge possibilities
     flood.prob.high.8.5[j,i] <- n.high.8.5/10000
   }
 }
+
+## Everything below this point is stuff to display my results
 
 ## --------------
 df.0m.tides.4.5 <- data.frame('year' = yr, 
@@ -175,11 +177,36 @@ ggplot() +
   labs(
     x = 'Year',
     y = 'Flood Probability',
-    title = 'RCP 4.5') +
+    title = 'Changing Annual Flood Probability Under RCP 4.5') +
   scale_x_continuous(limits = c(2000,2050), 
                      expand = c(0.01,0.1)) +
   scale_y_continuous(limits = c(0,0.6),
-                     expand = c(0,0)) 
+                     expand = c(0,0)) +
+  annotate("text",
+           x = 2020,
+           y = 0.06,
+           label = "No storm surge",
+           size = 4,
+           angle = 0) +
+  annotate("text",
+           x = 2020,
+           y = 0.11,
+           label = "1m storm surge",
+           size = 4,
+           angle = 0)+
+  annotate("text",
+           x = 2020,
+           y = 0.18,
+           label = "2m storm surge",
+           size = 4,
+           angle = 0)+
+  annotate("text",
+           x = 2020,
+           y = 0.28,
+           label = "3m storm surge",
+           size = 4,
+           angle = 0) +
+  theme_minimal()
 
 ggplot() +
   geom_ribbon(data = df.0m.tides.8.5, 
@@ -225,8 +252,33 @@ ggplot() +
   labs(
     x = 'Year',
     y = 'Flood Probability',
-    title = 'RCP 8.5') +
+    title = 'Changing Annual Flood Probability Under RCP 8.5') +
   scale_x_continuous(limits = c(2000,2050), 
                      expand = c(0.01,0.1)) +
   scale_y_continuous(limits = c(0,0.6),
-                     expand = c(0,0))
+                     expand = c(0,0)) +
+  annotate("text",
+           x = 2020,
+           y = 0.08,
+           label = "No storm surge",
+           size = 4,
+           angle = 0) +
+  annotate("text",
+           x = 2020,
+           y = 0.135,
+           label = "1m storm surge",
+           size = 4,
+           angle = 0)+
+  annotate("text",
+           x = 2020,
+           y = 0.21,
+           label = "2m storm surge",
+           size = 4,
+           angle = 0)+
+  annotate("text",
+           x = 2020,
+           y = 0.31,
+           label = "3m storm surge",
+           size = 4,
+           angle = 0) +
+  theme_minimal()
