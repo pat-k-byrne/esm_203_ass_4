@@ -1,5 +1,24 @@
 # Set the seed so we get the same random numbers every time we run this code
-set.seed(007)
+set.seed(666)
+
+# 
+rcp4.5 <- c(0, 2, 7)
+rcp8.5 <- c(0, 11, 31)
+t <- c(0, 20, 50)
+
+fit4.5.0.20 <- lm(rcp4.5[1:2] ~ t[1:2])
+fit4.5.20.50 <- lm(rcp4.5[2:3] ~ t[2:3])
+fit8.5.0.20 <- lm(rcp8.5[1:2] ~ t[1:2])
+fit8.5.20.50 <- lm(rcp8.5[2:3] ~ t[2:3])
+
+t2 <- seq(0, 50)
+rcp4.5.0.20.predicted <- t2*fit4.5.0.20
+
+rcp8.5.predicted <- exp(fit8.5$coefficients[2])
+plot(t2,rcp4.5.predicted)
+plot(t2,rcp8.5.predicted)
+plot(t2[c(1,20,50)],rcp4.5, ylim = c(0,35))
+plot(t2[c(1,20,50)],rcp8.5, ylim = c(0,35))
 
 # Generate a sequence of 10000 random numbers from a normal distribution with a mean of zero and a standard deviation of 3
 # This represents variations in sea level due to climate variability
