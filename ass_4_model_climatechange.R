@@ -12,7 +12,11 @@ fit8.5.0.20 <- lm(rcp8.5[1:2] ~ t[1:2])
 fit8.5.20.50 <- lm(rcp8.5[2:3] ~ t[2:3])
 
 t2 <- seq(0, 50)
-rcp4.5.0.20.predicted <- t2*fit4.5.0.20
+rcp4.5.0.20.predicted <- t2[1:20]*fit4.5.0.20$coefficients[2]
+rcp4.5.20.50.predicted <- t2[21:51]*fit4.5.20.50$coefficients[2]
+rcp8.5.0.20.predicted <- t2[1:20]*fit8.5.0.20$coefficients[2]
+rcp8.5.20.50.predicted <- t2[21:51]*fit8.5.20.50$coefficients[2]
+
 
 rcp8.5.predicted <- exp(fit8.5$coefficients[2])
 plot(t2,rcp4.5.predicted)
